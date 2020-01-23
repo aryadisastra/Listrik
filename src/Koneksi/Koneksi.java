@@ -7,27 +7,26 @@ package Koneksi;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author viugraph
+ * @author Aryzx
  */
 public class Koneksi {
-   public Connection con;
-   public Statement stm;
-    public void config() 
-    {
-        try{
-        Class.forName("com.mysql.jdbc.Driver");
-        con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/listrik", "root", "");
-        stm = (Statement) con.createStatement();
-        }catch(Exception e)
-        {
-            printStackTrace();
-            JOptionPane.showMessageDialog(null, "Gagal Konek Database!!");
+    public Connection con;
+    public Statement stm;
+    
+    public void config(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/listrik", "root", "");
+            stm = (Statement) con.createStatement();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "koneksi gagal "+e.getMessage());
         }
     }
+    
+    
 }

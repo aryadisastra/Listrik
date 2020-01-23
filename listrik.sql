@@ -1,136 +1,203 @@
--- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for Win32 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: listrik
--- ------------------------------------------------------
--- Server version	10.1.37-MariaDB
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 16 Jan 2020 pada 19.42
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 5.6.40
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `daya`
+-- Database: `listrik`
 --
 
-DROP TABLE IF EXISTS `daya`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `biayaadmin`
+--
+
+CREATE TABLE `biayaadmin` (
+  `id` varchar(20) NOT NULL,
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `biayaadmin`
+--
+
+INSERT INTO `biayaadmin` (`id`, `biaya`) VALUES
+('12020', 5000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `daya`
+--
+
 CREATE TABLE `daya` (
-  `id` varchar(10) NOT NULL,
-  `daya` int(11) NOT NULL,
-  `tarif` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL,
+  `watt` int(11) NOT NULL,
+  `hargakwh` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `daya`
+-- Dumping data untuk tabel `daya`
 --
 
-LOCK TABLES `daya` WRITE;
-/*!40000 ALTER TABLE `daya` DISABLE KEYS */;
-/*!40000 ALTER TABLE `daya` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `daya` (`id`, `watt`, `hargakwh`) VALUES
+(1, 900, 20000);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggan`
+-- Struktur dari tabel `pelanggan`
 --
 
-DROP TABLE IF EXISTS `pelanggan`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pelanggan` (
-  `iopei` varchar(30) NOT NULL,
+  `idpel` varchar(20) NOT NULL,
   `nama` varchar(40) NOT NULL,
-  `nohp` varchar(15) NOT NULL,
-  `kodepos` varchar(6) DEFAULT NULL,
-  `daya` int(11) NOT NULL,
-  `alamat` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pelanggan`
---
-
-LOCK TABLES `pelanggan` WRITE;
-/*!40000 ALTER TABLE `pelanggan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pelanggan` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `petugas`
---
-
-DROP TABLE IF EXISTS `petugas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `petugas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
   `email` text,
-  `nohp` varchar(15) NOT NULL,
+  `kode_pos` varchar(6) DEFAULT NULL,
+  `id_daya` int(11) DEFAULT NULL,
+  `alamat` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`idpel`, `nama`, `email`, `kode_pos`, `id_daya`, `alamat`) VALUES
+('111222333', 'aaaaa', 'gdghdggd@gfj.com', '40521', 1, 'yjhf,,vhjjhy');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `petugas`
+--
+
+CREATE TABLE `petugas` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(40) NOT NULL,
+  `tmptlhr` varchar(20) NOT NULL,
+  `tgllhr` text NOT NULL,
   `gender` varchar(10) NOT NULL,
+  `alamat` text NOT NULL,
+  `nohp` varchar(15) DEFAULT NULL,
   `akses` varchar(10) NOT NULL,
-  `alamat` text,
-  PRIMARY KEY (`id`)
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `petugas`
+-- Dumping data untuk tabel `petugas`
 --
 
-LOCK TABLES `petugas` WRITE;
-/*!40000 ALTER TABLE `petugas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `petugas` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `petugas` (`id`, `nama`, `tmptlhr`, `tgllhr`, `gender`, `alamat`, `nohp`, `akses`, `username`, `password`) VALUES
+(1, 'ghdjt', 'cihj', '10-12-1998', 'laki-laki', 'vbcjghfjg', '089754424644', 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
-DROP TABLE IF EXISTS `transaksi`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transaksi` (
-  `idtrnsk` int(11) NOT NULL AUTO_INCREMENT,
-  `iopei` int(11) NOT NULL,
-  `bulan` varchar(30) NOT NULL,
-  `tanggal` text NOT NULL,
-  `tagihan` int(11) NOT NULL,
-  `biayaadmin` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `idpel` varchar(20) NOT NULL,
+  `idpet` int(11) DEFAULT NULL,
+  `biayahari` int(11) DEFAULT NULL,
+  `waktu` text,
+  `id_biaya` varchar(20) DEFAULT NULL,
   `denda` int(11) DEFAULT NULL,
-  `total` int(11) NOT NULL,
-  `petugas` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`idtrnsk`)
+  `tagihan` int(11) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `transaksi`
+-- Indexes for dumped tables
 --
 
-LOCK TABLES `transaksi` WRITE;
-/*!40000 ALTER TABLE `transaksi` DISABLE KEYS */;
-/*!40000 ALTER TABLE `transaksi` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+--
+-- Indeks untuk tabel `biayaadmin`
+--
+ALTER TABLE `biayaadmin`
+  ADD PRIMARY KEY (`id`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indeks untuk tabel `daya`
+--
+ALTER TABLE `daya`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  ADD PRIMARY KEY (`idpel`),
+  ADD KEY `id_daya` (`id_daya`);
+
+--
+-- Indeks untuk tabel `petugas`
+--
+ALTER TABLE `petugas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idpet` (`idpet`),
+  ADD KEY `idpel` (`idpel`),
+  ADD KEY `id_biaya` (`id_biaya`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `petugas`
+--
+ALTER TABLE `petugas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  ADD CONSTRAINT `pelanggan_ibfk_1` FOREIGN KEY (`id_daya`) REFERENCES `daya` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`idpet`) REFERENCES `petugas` (`id`),
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`idpel`) REFERENCES `pelanggan` (`idpel`),
+  ADD CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`id_biaya`) REFERENCES `biayaadmin` (`id`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-01-12 14:44:18

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Listrik.jnlp">
+  <information>
+    <title>Listrik</title>
+    <vendor>Aryzx</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Listrik.jar" size="26160" download="eager" />
+    <jar href="lib\fontawesomefx-8.7-javadoc.jar" size="243451" download="eager" />
+    <jar href="lib\fontawesomefx-8.8-sources.jar" size="333016" download="eager" />
+    <jar href="lib\fontawesomefx-8.8.jar" size="443326" download="eager" />
+    <jar href="lib\fontawesomefx-8.9-javadoc.jar" size="279185" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Listrik" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="Support.Listrik"  name="Listrik" />
+  <update check="always"/>
+</jnlp>
