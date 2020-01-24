@@ -266,5 +266,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Label fx:id="lbl_iddaya" layoutX="587.0" layoutY="5.0" text="Label" visible="false" />
    </children>
 </AnchorPane>

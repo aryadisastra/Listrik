@@ -36,7 +36,7 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
-                  <Label onMouseClicked="#PetugasKlik" onMouseEntered="#BerandaIn" onMouseExited="#BerandaIn" text="BerandaOut">
+                  <Label onMouseClicked="#BerandaKlik" onMouseEntered="#BerandaIn" onMouseExited="#BerandaOut" text="Beranda">
                      <font>
                         <Font size="31.0" />
                      </font>
@@ -258,11 +258,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tf_akses">
-                     <HBox.margin>
-                        <Insets left="79.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <ComboBox fx:id="tf_akses" prefWidth="150.0" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -319,5 +315,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Label fx:id="lbl_idpetugas" layoutX="587.0" layoutY="12.0" text="label" visible="false" />
    </children>
 </AnchorPane>

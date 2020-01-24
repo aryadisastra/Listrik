@@ -36,7 +36,7 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </FontAwesomeIconView>
-                  <Label onMouseClicked="#PetugasKlik" onMouseEntered="#BerandaIn" onMouseExited="#BerandaIn" text="BerandaOut">
+                  <Label onMouseClicked="#BerandaKlik" onMouseEntered="#BerandaIn" onMouseExited="#BerandaOut" text="Beranda">
                      <font>
                         <Font size="31.0" />
                      </font>

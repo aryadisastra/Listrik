@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Listrik.jar" size="26160" download="eager" />
+    <jar href="Listrik.jar" size="27429" download="eager" />
     <jar href="lib\fontawesomefx-8.7-javadoc.jar" size="243451" download="eager" />
     <jar href="lib\fontawesomefx-8.8-sources.jar" size="333016" download="eager" />
     <jar href="lib\fontawesomefx-8.8.jar" size="443326" download="eager" />

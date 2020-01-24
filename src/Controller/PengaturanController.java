@@ -6,6 +6,7 @@
 package Controller;
 
 import Koneksi.Koneksi;
+import Model.ModelDaya;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.net.URL;
@@ -26,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * FXML Controller class
@@ -53,7 +55,7 @@ public class PengaturanController implements Initializable {
     @FXML
     private TableView<?> tbl_daya;
     @FXML
-    private TableColumn<?, ?> col_id;
+    private TableColumn<String, ModelDaya> col_id;
     @FXML
     private TableColumn<?, ?> col_daya;
     @FXML
@@ -77,6 +79,7 @@ public class PengaturanController implements Initializable {
     @FXML
     private Label lbl_iddaya;
     
+    
     /**
      * Initializes the controller class.
      */
@@ -89,6 +92,7 @@ public class PengaturanController implements Initializable {
         con = db.con;
         stm =  db.stm;
         
+       
     }    
 
     @FXML
@@ -269,8 +273,9 @@ public class PengaturanController implements Initializable {
     }
 
     @FXML
-    private void TabelKlik(MouseEvent event) {
+    private void TabelKlik(MouseEvent event) {  
     }
+    
 
     @FXML
     private void TambahBiayaKlik(ActionEvent event) {

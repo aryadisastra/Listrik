@@ -5,8 +5,14 @@
  */
 package Controller;
 
+import Koneksi.Koneksi;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +39,10 @@ import javax.swing.JOptionPane;
  * @author Aryzx
  */
 public class PetugasController implements Initializable {
+    
+    ObservableList<String> list = FXCollections.observableArrayList("PRIA","WANITA");
+    
+    ObservableList<String> listakses = FXCollections.observableArrayList("admin","Petugas");
 
     @FXML
     private Label lbl_akses;
@@ -57,11 +67,12 @@ public class PetugasController implements Initializable {
     @FXML
     private TextField tf_tmpt;
     @FXML
+    
     private DatePicker dp_tgl;
     @FXML
-    private ComboBox<?> cb_gender;
+    private ComboBox<String> cb_gender;
     @FXML
-    private TextField tf_akses;
+    private ComboBox<String> tf_akses;
     @FXML
     private TextArea tf_alamat;
     @FXML
@@ -73,6 +84,12 @@ public class PetugasController implements Initializable {
     @FXML
     private TableColumn<?, ?> col_nama;
     Stage closeStage = new Stage();
+    
+    Connection con;
+    Statement stm;
+    ResultSet rs;
+    @FXML
+    private Label lbl_idpetugas;
 
     /**
      * Initializes the controller class.
@@ -80,6 +97,12 @@ public class PetugasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cb_gender.setItems(list);
+        tf_akses.setItems(listakses);
+         Koneksi db = new Koneksi();
+        db.config();
+        con = db.con;
+        stm =  db.stm;
     }    
 
     @FXML
@@ -232,7 +255,7 @@ public class PetugasController implements Initializable {
     @FXML
     private void TambahKlik(ActionEvent event) {
         try{
-            String sql = "INSERT INTO petugas (nama,tmptlhr,tgllhr,gender,alamat,nohp,akses,username,password) VALUES ('"+tf_username.getText()+"','"+tf_harga.getText()+"') ";
+            String sql = "INSERT INTO petugas (nama,tmptlhr,tgllhr,gender,alamat,nohp,akses,username,password) VALUES ('"+tf_nama.getText()+"','"+tf_tmpt.getText()+"','"+dp_tgl.getValue()+"','"+cb_gender.getSelectionModel().getSelectedItem().toString()+"','"+tf_alamat.getText()+"','"+tf_nohp.getText()+"','"+tf_akses.getSelectionModel().getSelectedItem().toString()+"','"+tf_username.getText()+"','"+pf_pass.getText()+"')";
             stm.execute(sql);
         }
         catch(Exception e){
@@ -242,10 +265,24 @@ public class PetugasController implements Initializable {
 
     @FXML
     private void UbahKlik(ActionEvent event) {
+        try{
+            String sql = "UPDATE SET petugas (nama,tmptlhr,tgllhr,gender,alamat,nohp,akses,username,password) VALUES ('"+tf_nama.getText()+"','"+tf_tmpt.getText()+"','"+dp_tgl.getValue()+"','"+cb_gender.getSelectionModel().getSelectedItem().toString()+"','"+tf_alamat.getText()+"','"+tf_nohp.getText()+"','"+tf_akses.getSelectionModel().getSelectedItem().toString()+"','"+tf_username.getText()+"','"+pf_pass.getText()+"') WHERE id = '"+lbl_idpetugas.getText()+"'";
+            stm.execute(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void HapusKlik(ActionEvent event) {
+        try{
+            String sql = "DELETE FROM petugas WHERE id = '"+lbl_idpetugas.getText()+"'";
+            stm.executeUpdate(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
